@@ -2,18 +2,18 @@
 
 # TEMPLATE-AppImage 🐧
 
-[![GitHub Downloads](https://img.shields.io/github/downloads/pkgforge-dev/TEMPLATE-AppImage/total?logo=github&label=GitHub%20Downloads)](https://github.com/pkgforge-dev/TEMPLATE-AppImage/releases/latest)
-[![CI Build Status](https://github.com/pkgforge-dev/TEMPLATE-AppImage/actions/workflows/appimage.yml/badge.svg)](https://github.com/pkgforge-dev/TEMPLATE-AppImage/releases/latest)
-[![Latest Stable Release](https://img.shields.io/github/v/release/pkgforge-dev/TEMPLATE-AppImage)](https://github.com/pkgforge-dev/TEMPLATE-AppImage/releases/latest)
+[![GitHub Downloads](https://img.shields.io/github/downloads/pkgforge-dev/Emacs-AppImage/total?logo=github&label=GitHub%20Downloads)](https://github.com/pkgforge-dev/Emacs-AppImage/releases/latest)
+[![CI Build Status](https://github.com/pkgforge-dev/Emacs-AppImage/actions/workflows/appimage.yml/badge.svg)](https://github.com/pkgforge-dev/Emacs-AppImage/releases/latest)
+[![Latest Stable Release](https://img.shields.io/github/v/release/pkgforge-dev/Emacs-AppImage)](https://github.com/pkgforge-dev/Emacs-AppImage/releases/latest)
 
 <p align="center">
-  <img src="https://github.com/pkgforge-dev.png" width="128" />
+  <img src="https://www.gnu.org/savannah-checkouts/gnu/emacs/images/emacs.png" width="128" />
 </p>
 
 
 | Latest Stable Release | Upstream URL |
 | :---: | :---: |
-| [Click here](https://github.com/pkgforge-dev/TEMPLATE-AppImage/releases/latest) | [Click here](https://github.com/pkgforge-dev/Anylinux-AppImages) |
+| [Click here](https://github.com/pkgforge-dev/Emacs-AppImage/releases/latest) | [Click here](https://cgit.git.savannah.gnu.org/cgit/emacs.git) |
 
 </div>
 
