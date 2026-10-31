@@ -3,7 +3,7 @@
 set -eu
 
 ARCH=$(uname -m)
-VERSION=$(pacman -Q PACKAGENAME | awk '{print $2; exit}') # example command to get version of application here
+VERSION=$(pacman -Q emacs | awk '{print $2; exit}') # example command to get version of application here
 export ARCH VERSION
 export OUTPATH=./dist
 export ADD_HOOKS="self-updater.hook"
@@ -12,7 +12,10 @@ export ICON=PATH_OR_URL_TO_ICON
 export DESKTOP=PATH_OR_URL_TO_DESKTOP_ENTRY
 
 # Deploy dependencies
-quick-sharun /PATH/TO/BINARY_AND_LIBRARIES_HERE
+quick-sharun \
+   /usr/bin/emacs* \
+   /usr/lib/emacs \
+   /usr/share/emacs
 
 # Additional changes can be done in between here
 
