@@ -8,8 +8,8 @@ export ARCH VERSION
 export OUTPATH=./dist
 export ADD_HOOKS="self-updater.hook"
 export UPINFO="gh-releases-zsync|${GITHUB_REPOSITORY%/*}|${GITHUB_REPOSITORY#*/}|latest|*$ARCH.AppImage.zsync"
-export ICON=usr/share/icons/hicolor/128x128/apps/emacs.png
-export DESKTOP=usr/share/applications/emacs.desktop
+export ICON=/usr/share/icons/hicolor/128x128/apps/emacs.png
+export DESKTOP=/usr/share/applications/emacs.desktop
 
 # Deploy dependencies
 quick-sharun \
