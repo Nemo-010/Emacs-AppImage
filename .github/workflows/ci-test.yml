@@ -1,0 +1,37 @@
+name: CI Test Build
+on:
+  push:
+    branches: [ci-test]
+  workflow_dispatch: {}
+
+jobs:
+  build:
+    name: Build AppImage (x86_64)
+    runs-on: ubuntu-latest
+    container: ghcr.io/pkgforge-dev/archlinux:latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - name: Preparing Container
+        uses: pkgforge-dev/anylinux-setup-action@ba7321e11074f9e387a0634e653d09b115d576cd
+      - name: Install Dependencies
+        run: /bin/sh ./get-dependencies.sh
+      - name: Make AppImage
+        run: /bin/sh ./make-appimage.sh
+      - name: Upload artifact
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+        with:
+          name: AppImage-x86_64
+          path: dist
+      - name: Verify native-comp fix
+        run: |
+          set -eu
+          ./dist/*.AppImage --appimage-extract > /dev/null
+          root=squashfs-root
+          echo "== shipped site-start.el =="
+          cat "$root"/share/emacs/site-lisp/site-start.el
+          newest_elc=$(find "$root" -name '*.elc' -printf '%T@\n' | sort -n | tail -n 1)
+          oldest_eln=$(find "$root" -name '*.eln' -printf '%T@\n' | sort -n | head -n 1)
+          echo "newest_elc=$newest_elc oldest_eln=$oldest_eln"
+          awk -v e="$oldest_eln" -v c="$newest_elc" 'BEGIN { if (e + 0 < c + 0) { print "FAIL: a .eln is older than a .elc"; exit 1 } print "OK: .eln are all at least as new as the .elc" }'
+          echo "== is site-start.el found and effective? =="
+          HOME=$PWD/fakehome "$root"/AppRun --batch --eval '(princ (format "site-start=%s jit=%s trampolines=%s\n" (locate-library "site-start") native-comp-jit-compilation native-comp-enable-subr-trampolines))'
